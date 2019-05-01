@@ -4,21 +4,20 @@
 # put your code here
 import sys
 
-def restaurant_ratings(file):
+def restaurant_ratings():
 
-	file = sys.argv[1]
-	
+	filename = sys.argv[1]
+	open_file = open(filename) #file object
 
-	for line in open(file):
-		restaurants_and_ratings = line.split(":")
-	
+	list_of_rr = []
+	for line in open_file:
+		restaurants_and_ratings = line.strip().rsplit(":")
+		list_of_rr.append(restaurants_and_ratings)
+	open_file.close()
 
-	length = len(restaurants_and_ratings)
-	i = 0
-	restaurant_dict = {}
-	while i < length - 1:
-		restaurant_dict[restaurants_and_ratings[i]] = restaurants_and_ratings[i + 1]
-	return restaurant_dict
+	alpha_sorted = sorted(list_of_rr)
 
-print(restaurant_ratings("scores.txt"))
+	return(dict(alpha_sorted))
 
+
+print(restaurant_ratings())
