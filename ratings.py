@@ -5,12 +5,12 @@
 import sys
 
 def restaurant_ratings():
-	filename = sys.argv[1]
+	filename = sys.argv[1] #creates file object, don't need to provide parameter
 	open_file = open(filename) #file object
 	list_of_rr = []
 	for line in open_file:
-		restaurants_and_ratings = line.strip().rsplit(":")
-		list_of_rr.append(restaurants_and_ratings)
+		restaurants_and_ratings = line.strip().rsplit(":") #removes /n or whitespace
+		list_of_rr.append(restaurants_and_ratings) #appends each line to a list
 	open_file.close()
 	alpha_sorted = sorted(list_of_rr)
 	return(dict(alpha_sorted))
